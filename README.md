@@ -80,3 +80,7 @@ chart-js react-chartjs-2
 html-react-parser
 moment
 millify 
+
+
+//how to use react-router-dom
+wrap how app inside the BrowerRouter
