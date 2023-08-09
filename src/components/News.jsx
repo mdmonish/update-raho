@@ -3,6 +3,7 @@ import moment from "moment";
 import { useGetNewsQuery } from "../services/newsApi";
 import { Select } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import Loader from "./Loader";
 
 
 const News = ({ limited }) => {
@@ -14,7 +15,7 @@ const News = ({ limited }) => {
   const { data } = useGetCryptosQuery(100);
 
 
-  if (isFetching) return "loading...";
+  if (isFetching) return <Loader />;
   return (
     <div>
     {!limited && (
@@ -22,7 +23,7 @@ const News = ({ limited }) => {
           <Select
             showSearch
             value={newsCategory}
-            className="select-news"
+            className="my-8  font-bold w-72"
             placeholder="Select a Crypto"
             optionFilterProp="children"
             onChange={(value) => setNewsCategory(value)}
@@ -33,46 +34,46 @@ const News = ({ limited }) => {
           </Select>
         
       )}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
+      <div className="grid grid-cols-3 gap-6">
         {cryptoNews?.value?.map((news, i) => (
           <div
             key={i}
-            style={{ border: "1px solid black", margin: 10, padding: 8 }}
+            className="border-2 shadow-lg rounded-md p-6 hover:scale-105"
           >
             <a
               href={news.url}
               target="_blank"
               rel="noreferrer"
-              style={{ textDecoration: "none" }}
             >
-              <div style={{display:"flex"}}>
-                <h3 style={{margin:0}}>{news.name}</h3>
+              <div className="flex">
+                <h2 className="font-bold">{news.name}</h2>
                 <img
                   src={
                     news.image?.thumbnail?.contentUrl ||
                     "https://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg"
                   }
-                  style={{ width: "80px", height: "80px" }}
+                  className="w-20 h-20 ml-2"
                   alt=""
                 />
               </div>
-              <p>
+              <p className="my-4">
                 {news.description > 100
                   ? `${news.description.subString(0, 100)}`
                   : news.description}
               </p>
-              <div style={{display:"flex",justifyContent:"space-between"}} >
-              <div style={{display:"flex", alignItems:"center"}}>
+              <div className="grid grid-cols-3 items-center mt-6" >
+              <div className="col-span-2 flex items-center">
                 <img
                   src={news?.provider[0]?.image?.thumbnail?.contentUrl}
                   alt=""
-                  style={{ width: "40px", height: "40px", opacity: 1 }}
+                  className="w-7 h-7 opacity-1 mr-2"
                 />
 
-                <p style={{margin:0}}>{news?.provider[0]?.name}</p>
+                <p>{news?.provider[0]?.name}</p>
                 </div>
-                
+                <div className="col-span-1 text-right">
                 <p>{moment(news.datePublished).startOf("ss").fromNow()}</p>
+                </div>
               </div>
             </a>
           </div>

@@ -3,49 +3,51 @@ import millify from "millify";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Cryptocurrencies, News } from "./index";
 import { Link } from "react-router-dom";
+import Loader from "./Loader";
 
 const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
 
-  if (isFetching) return "loading...";
+  if (isFetching) return <Loader/>;
 
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)",border:"1px solid black", margin: 10, padding: 8}}>
+    <h1 className="my-8">Global Crypto Stats</h1>
+      <div className="grid grid-cols-2 my-4">
         <div>
           <h3>Total CryptoCurrencies</h3>
-          <h4>{millify(globalStats?.totalCoins)}</h4>
+          <h1 className="font-xxl">{millify(globalStats?.totalCoins)}</h1>
         </div>
         <div>
           <h3>Total Exchanges</h3>
-          <h4>{millify(globalStats?.totalExchanges)}</h4>
+          <h1>{millify(globalStats?.totalExchanges)}</h1>
         </div>
 
         <div>
           <h3>Total Market Cap</h3>
-          <h4>{millify(globalStats?.totalMarketCap)}</h4>
+          <h1>{millify(globalStats?.totalMarketCap)}</h1>
         </div>
         <div>
           <h3>Total 24h volume</h3>
-          <h4>{millify(globalStats?.totalMarketCap)}</h4>
+          <h1>{millify(globalStats?.totalMarketCap)}</h1>
         </div>
 
         <div>
           <h3>Total Markets</h3>
-          <h4>{millify(globalStats?.totalMarketCap)}</h4>
+          <h1>{millify(globalStats?.totalMarketCap)}</h1>
         </div>
       </div>
-      <div className="crypto__top10" style={{ display: "flex",margin: 10,justifyContent:"space-between" }}>
-        <h2 style={{ margin: 0 }}>Top 10 CryptoCurrencies in the World</h2>
+      <div className="flex justify-between mt-6 mb-4">
+        <h2>Top 10 CryptoCurrencies in the World</h2>
         <button>
-          <Link to="/cryptocurrencies" style={{textDecoration:"none"}}>Show More</Link>
+          <Link to="/cryptocurrencies">Show More</Link>
         </button>
       </div>
       <Cryptocurrencies limited />
-      <div className="crypto__news" style={{ display: "flex",margin: 10, justifyContent:"space-between" }}>
-        <h2 style={{ margin: 0 }}>Latest Crypto News</h2>
-        <button><Link to="/news" style={{textDecoration:"none"}}>Show More</Link></button>
+      <div className="flex justify-between mt-6 mb-4">
+        <h2>Latest Crypto News</h2>
+        <button><Link to="/news">Show More</Link></button>
       </div>
       <News limited />
     </div>

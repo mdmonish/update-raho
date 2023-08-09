@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { useGetExchangesQuery } from "../services/exchangesApi";
 import Accordion from "./Accordion";
+import Loader from "./Loader";
 
 
 const Exchanges = () => {
@@ -19,17 +20,10 @@ const Exchanges = () => {
     }
   }, [isFetching, exchanges]);
 
-  if (isFetching) return "loading...";
+  if (isFetching) return <Loader />;
 
-  console.log(exchangesList);
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
-        <h4>Exchanges</h4>
-        <h4>24h Trade Volume</h4>
-        <h4>Markets</h4>
-        <h4>Changes</h4>
-      </div>
       <Accordion items={exchangesList} active={activeIndex} setActive={setActiveIndex}/>
     </div>
   );

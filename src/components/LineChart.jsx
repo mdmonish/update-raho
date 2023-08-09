@@ -16,15 +16,15 @@ const LineChart = ({ coinid, timePeriod, currentPrice, coinName }) => {
 
   useEffect(() => {
     if (!isFetching) {
-      setChange(coinHistory?.data?.change)
-      const mapped = coinHistory?.data?.history?.map((d) =>
+      setChange(coinHistory?.data?.change);
+      const mapped = coinHistory?.data?.history?.map(d =>
         moment.unix(d.timestamp).format("DD-MMM-YYYY")
       );
-      const mappedPrice = coinHistory?.data?.history?.map((data) => data.price);
+      const mappedPrice = coinHistory?.data?.history?.map(data => data.price);
       setCoinPrice(mappedPrice);
       setCoinTimestamp(mapped);
     }
-  }, [isFetching,coinHistory]);
+  }, [isFetching, coinHistory]);
   const data = {
     labels: coinTimestamp,
     datasets: [
@@ -34,9 +34,9 @@ const LineChart = ({ coinid, timePeriod, currentPrice, coinName }) => {
         fill: false,
         backgroundColor: "#0071bd",
         borderColor: "#0071bd",
-        
       },
     ],
+    backgroundColor:"black"
   };
 
   const options = {
@@ -50,7 +50,15 @@ const LineChart = ({ coinid, timePeriod, currentPrice, coinName }) => {
   };
   return (
     <>
-      <div style={{display:'flex',alignItems:"center",justifyContent:"space-between"}}><h2>{coinName }Price Chart</h2><div style={{display:'flex',alignItems:"center",justifyContent:"space-evenly"}}><h4 style={{marginRight:"20px"}}>{change}%</h4><h4>Current {coinName} Price: {currentPrice}</h4></div></div>
+      <div className="flex items-center justify-between mb-6">
+        <h2>{coinName}Price Chart</h2>
+        <div className="flex justify-between">
+          <h4 className="mr-6">{change}%</h4>
+          <h4>
+            Current {coinName} Price: {currentPrice}
+          </h4>
+        </div>
+      </div>
       <Line data={data} options={options} />
     </>
   );

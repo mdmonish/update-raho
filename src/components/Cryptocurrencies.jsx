@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import millify from "millify";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import Loader from "./Loader";
 
 const Cryptocurrencies = ({ limited }) => {
   const count = limited ? 10 : 100;
@@ -16,42 +17,46 @@ const Cryptocurrencies = ({ limited }) => {
 
     setCryptoData(filtered);
   }, [inputValue, cryptoList]);
-  
-  if (isFetching) return "loading...";
+
+  if (isFetching) return <Loader/>;
   return (
     <>
       {!limited && (
-        <div>
+        <div className="text-center my-8">
           <input
             type="text"
+            className="border px-2 py-1 w-96 rounded-sm shadow-lg"
             value={inputValue}
-            placeholder="search here"
+            placeholder="Search here"
             onChange={(e) => setInputValue(e.target.value)}
           />
         </div>
       )}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
+      <div className="grid grid-cols-4 gap-4">
         {cryptoData?.map((currency, i) => (
           <div
             key={i}
-            style={{ border: "1px solid black", margin: 10, padding: 8 }}
+            className="border-2 shadow-lg rounded-md p-6 hover:scale-105"
+            
           >
-            <Link to={`/crypto/${currency.uuid}`} style={{textDecoration:"none"}}>
-              <div>
-                <div style={{display:"flex", justifyContent:"space-between"}}>
-                  <h2 style={{margin:0}}>
+            <Link to={`/crypto/${currency.uuid}`}>
+            
+                <div className="flex justify-between">
+                  <h2 className="font-bold">
                     {currency.rank}. {currency.name}
                   </h2>
                   <img
                     src={currency.iconUrl}
                     alt=""
-                    style={{ width: "40px", height: "40px" }}
+                    className="w-8 h-8"
                   />
                 </div>
-                <h3>Price: {millify(currency.price)}</h3>
-                <h3>Market: {millify(currency.marketCap)}</h3>
-                <h3>Daily: {millify(currency.change)}%</h3>
+                <div className="mt-10">
+                <h3 className="py-1.5">Price: {millify(currency.price)}</h3>
+                <h3 className="py-1.5">Market: {millify(currency.marketCap)}</h3>
+                <h3 className="py-1.5">Daily: {millify(currency.change)}%</h3>
               </div>
+
             </Link>
           </div>
         ))}

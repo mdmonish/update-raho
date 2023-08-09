@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import HTMLReactParser from 'html-react-parser';
-import { useGetCryptoDetailsQuery} from "../services/cryptoApi";
+import HTMLReactParser from "html-react-parser";
+import { useGetCryptoDetailsQuery } from "../services/cryptoApi";
 import millify from "millify";
 import {
   MoneyCollectOutlined,
@@ -14,17 +14,17 @@ import {
   NumberOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
+import Loader from "./Loader";
 import LineChart from "./LineChart";
-import { Select} from "antd";
+import { Select } from "antd";
 
 const CryptoDetails = () => {
   const { coinid } = useParams();
-  const [timePeriod,setTimePeriod] =useState("3h");
+  const [timePeriod, setTimePeriod] = useState("3h");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinid);
-  
 
   const cryptoDetails = data?.data?.coin;
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+  const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
 
   const stats = [
     {
@@ -56,7 +56,6 @@ const CryptoDetails = () => {
       icon: <TrophyOutlined />,
     },
   ];
-  
 
   const genericStats = [
     {
@@ -95,80 +94,95 @@ const CryptoDetails = () => {
     },
   ];
 
-  if (isFetching) return "loading...";
+  if (isFetching) return <Loader />;
   return (
     <div className="cryptoDetail__conatiner">
-      <div className="coin__heading__container">
-        <h2>
+      <div className="my-8 text-center">
+        <h2 className="my-4">
           {cryptoDetails?.name} ({cryptoDetails?.symbol}) Price
         </h2>
-        <p>
+        <p className="my-4">
           {cryptoDetails?.name} live price in US dollars.View value statistics,
           market cap and supply
         </p>
         <hr />
       </div>
-      <Select defaultValue="7d" className="select-timeperiod" placeholder="Select Timeperiod" onChange={(value) => setTimePeriod(value)}>
-        {time.map((date) => <Select.Option key={date}>{date}</Select.Option>)}
-      </Select>
-      <LineChart coinName={cryptoDetails?.name} currentPrice={millify(cryptoDetails?.price)} coinid={coinid} timePeriod={timePeriod}/>
-      <div
-        className="stats__container"
-        style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)" }}
+      <Select
+        defaultValue="7d"
+        className="w-32 font-bold mb-3"
+        placeholder="Select Timeperiod"
+        onChange={(value) => setTimePeriod(value)}
       >
+        {time.map((date) => (
+          <Select.Option key={date}>{date}</Select.Option>
+        ))}
+      </Select>
+      <LineChart
+        coinName={cryptoDetails?.name}
+        currentPrice={millify(cryptoDetails?.price)}
+        coinid={coinid}
+        timePeriod={timePeriod}
+      />
+      <div className="grid grid-cols-2 mt-8">
         <div>
-          <div>
+          <div className="mb-4">
             <h3>{cryptoDetails?.name} Value Statistics</h3>
             <p>An overview showing the stats of {cryptoDetails?.name}</p>
           </div>
           {stats?.map((stat) => (
-            <div style={{marginRight:"150px"}} key={stat.title}> <div
-              style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)" ,paddingLeft:"10px",paddingRight:"10px"}}
+            <div
+              className="grid grid-cols-2 px-4 py-8 border-b"
+              style={{ marginRight: "150px" }}
+              key={stat.title}
             >
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <p  style={{marginRight: "10px"}}>{stat.icon}</p>
-                <p>{stat.title}</p>
+              <div className="flex">
+                <p className="-mt-1">{stat.icon}</p>
+                <span className="ml-4">{stat.title}</span>
               </div>
-              <h4 style={{textAlign: "right"}}>{stat.value}</h4>
-            </div>
-            <hr />
+              <h4 className="text-right">{stat.value}</h4>
             </div>
           ))}
         </div>
         <div>
-          <div>
+          <div className="mb-4">
             <h3>Other Statistics</h3>
             <p>An overview showing the stats of app cryptocurrencies</p>
           </div>
           {genericStats?.map((stat) => (
-            <div style={{marginRight:"150px"}} key={stat.title}><div
-              style={{ display: "grid", justifyConntent:"space-between",gridTemplateColumns: "repeat(2,1fr)",paddingLeft:"10px",paddingRight:"10px"}}
+            <div
+              className="grid grid-cols-2 px-4 py-8 border-b"
+              style={{ marginRight: "150px" }}
+              key={stat.title}
             >
-              <div style={{ display: "flex", alignItems: "center",}}>
-                <p style={{marginRight: "10px"}}>{stat.icon}</p>
-                <p>{stat.title}</p>
+              <div className="flex items-center">
+                <p className="-mt-1">
+                  {stat.icon}
+                  
+                </p><span className="ml-4">{stat.title}</span>
               </div>
-              <h4 style={{textAlign: "right"}}>{stat.value}</h4>
-            </div>
-            <hr />
+              <h4 className="text-right">{stat.value}</h4>
             </div>
           ))}
         </div>
       </div>
-      <div  >
-       <div> <h3>What is {cryptoDetails?.name}?</h3>
-        {HTMLReactParser(cryptoDetails?.description)}
-          </div>
-          <h2 className="coin-details-heading">{cryptoDetails.name} Links</h2>
-          
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)"}}>{cryptoDetails.links?.map((link) => (
+      
+        <div className="my-8">
+          <h3>What is {cryptoDetails?.name}?</h3>
+          {HTMLReactParser(cryptoDetails?.description)}
+        </div>
+        <h2 className="coin-details-heading">{cryptoDetails.name} Links</h2>
+
+        <div className="grid grid-cols-2 mt-4">
+          {cryptoDetails.links?.map((link) => (
             <div className="coin-link" key={link.name}>
-             <h3 className="link-name">{link.type}</h3>
-              <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
+              <h3 className="link-name">{link.type}</h3>
+              <a href={link.url} target="_blank" rel="noreferrer" className="underline text-cyan-600">
+                {link.name}
+              </a>
             </div>
           ))}
         </div>
-      </div>
+     
     </div>
   );
 };
