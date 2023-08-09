@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import cryptocurrency from "../images/cryptocurrency.png";
+import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined} from '@ant-design/icons';
 
 const Navbar = () => {
   return (
@@ -17,10 +18,10 @@ const Navbar = () => {
       </div>
      
       <div className="menu" style={{display:"flex",flexDirection:"column"}}>
-        <Link to="/" style={{textDecoration:"none"}}>Home</Link>
-        <Link to="/exchanges" style={{textDecoration:"none"}}>Exchanges</Link>
-        <Link to="/cryptoCurrencies" style={{textDecoration:"none"}}>CryptoCurrencies</Link>
-        <Link to="/news" style={{textDecoration:"none"}}>News</Link>
+        <Link to="/" style={{textDecoration:"none"}}><HomeOutlined/>Home</Link>
+        <Link to="/exchanges" style={{textDecoration:"none"}}><FundOutlined/>Exchanges</Link>
+        <Link to="/cryptoCurrencies" style={{textDecoration:"none"}}><MoneyCollectOutlined/>CryptoCurrencies</Link>
+        <Link to="/news" style={{textDecoration:"none"}}><BulbOutlined/>News</Link>
       </div>
     </div>
   );

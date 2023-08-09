@@ -1,5 +1,4 @@
 import { Link, Route, Routes } from "react-router-dom";
-// import "./App.css";
 import {
   Navbar,
   Homepage,
@@ -15,15 +14,16 @@ function App() {
       <div className="navbar" style={{ width: "20%" }}>
         <Navbar />
       </div>
-      <div className="main" style={{ width: "80%",display:"grid",gridTemplateColumns:"repeat(2,1 fr)", overflowY:"scroll",maxHeight:"100%" }}>
-        <Routes>
+      <div className="main" style={{ width: "80%",overflowY:"scroll" }}>
+        <div style={{minHeight:"80vh"}}><Routes>
           <Route exact path="/" Component={Homepage} />
           <Route exact path="/cryptocurrencies" Component={Cryptocurrencies} />
           <Route exact path="/crypto/:coinid" Component={CryptoDetails} />
           <Route exact path="/exchanges" Component={Exchanges} />
           <Route exact path="/news" Component={News} />
         </Routes>
-        <div className="footer" style={{textAlign:"center"}}>
+        </div>
+        <div className="footer" style={{textAlign:"center",display:"block",bottom:0}}>
           <h2>CryptoMania</h2>
           <h3>All rights reserved</h3>
           <div>
@@ -34,6 +34,7 @@ function App() {
           </div>
         </div>
       </div>
+     
     </div>
   );
 }

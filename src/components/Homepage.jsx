@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import millify from "millify";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Cryptocurrencies, News } from "./index";
@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
-  // const {data:news,isFetching} = useGetNewsQuery();
   const globalStats = data?.data?.stats;
 
   if (isFetching) return "loading...";

@@ -16,6 +16,7 @@ const Cryptocurrencies = ({ limited }) => {
 
     setCryptoData(filtered);
   }, [inputValue, cryptoList]);
+  
   if (isFetching) return "loading...";
   return (
     <>

@@ -1,18 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { useGetNewsQuery } from "../services/newsApi";
+import { Select } from "antd";
+import { useGetCryptosQuery } from "../services/cryptoApi";
 
 
 const News = ({ limited }) => {
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data: cryptoNews, isFetching } = useGetNewsQuery({
-    newsCategory: "Cryptocurrency",
+    newsCategory,
     count: limited ? 6 : 100,
   });
+  const { data } = useGetCryptosQuery(100);
 
 
   if (isFetching) return "loading...";
   return (
     <div>
+    {!limited && (
+        
+          <Select
+            showSearch
+            value={newsCategory}
+            className="select-news"
+            placeholder="Select a Crypto"
+            optionFilterProp="children"
+            onChange={(value) => setNewsCategory(value)}
+            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+          >
+            <Select.Option key="Cryptocurrency">Cryptocurrency</Select.Option>
+            {data?.data?.coins?.map((currency) => <Select.Option key={currency.name}>{currency.name}</Select.Option>)}
+          </Select>
+        
+      )}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
         {cryptoNews?.value?.map((news, i) => (
           <div
@@ -22,6 +42,7 @@ const News = ({ limited }) => {
             <a
               href={news.url}
               target="_blank"
+              rel="noreferrer"
               style={{ textDecoration: "none" }}
             >
               <div style={{display:"flex"}}>
