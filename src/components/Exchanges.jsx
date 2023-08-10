@@ -23,7 +23,7 @@ const Exchanges = () => {
   if (isFetching) return <Loader />;
 
   return (
-    <div>
+    <div className="mt-4">
       <Accordion items={exchangesList} active={activeIndex} setActive={setActiveIndex}/>
     </div>
   );

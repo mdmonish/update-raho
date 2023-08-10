@@ -51,11 +51,11 @@ const LineChart = ({ coinid, timePeriod, currentPrice, coinName }) => {
   return (
     <>
       <div className="flex items-center justify-between mb-6">
-        <h2>{coinName}Price Chart</h2>
+        <h2 className="text-cyan-600 font-bold text-xl">{coinName} Price Chart</h2>
         <div className="flex justify-between">
-          <h4 className="mr-6">{change}%</h4>
+          <h4 className="mr-6">Changes : <span className="font-bold">{change}%</span></h4>
           <h4>
-            Current {coinName} Price: {currentPrice}
+            Current {coinName} Price: <span className="font-bold">$ {currentPrice}</span>
           </h4>
         </div>
       </div>

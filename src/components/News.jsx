@@ -23,7 +23,7 @@ const News = ({ limited }) => {
           <Select
             showSearch
             value={newsCategory}
-            className="my-8  font-bold w-72"
+            className="my-8 font-bold w-72"
             placeholder="Select a Crypto"
             optionFilterProp="children"
             onChange={(value) => setNewsCategory(value)}
@@ -34,7 +34,7 @@ const News = ({ limited }) => {
           </Select>
         
       )}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {cryptoNews?.value?.map((news, i) => (
           <div
             key={i}
@@ -46,7 +46,7 @@ const News = ({ limited }) => {
               rel="noreferrer"
             >
               <div className="flex">
-                <h2 className="font-bold">{news.name}</h2>
+                <h2 className="font-bold text-lg">{news.name}</h2>
                 <img
                   src={
                     news.image?.thumbnail?.contentUrl ||
@@ -56,12 +56,12 @@ const News = ({ limited }) => {
                   alt=""
                 />
               </div>
-              <p className="my-4">
+              <p className="my-4 text-sm">
                 {news.description > 100
                   ? `${news.description.subString(0, 100)}`
                   : news.description}
               </p>
-              <div className="grid grid-cols-3 items-center mt-6" >
+              <div className="grid grid-cols-1 lg:grid-cols-3 items-center mt-6" >
               <div className="col-span-2 flex items-center">
                 <img
                   src={news?.provider[0]?.image?.thumbnail?.contentUrl}
@@ -71,7 +71,7 @@ const News = ({ limited }) => {
 
                 <p>{news?.provider[0]?.name}</p>
                 </div>
-                <div className="col-span-1 text-right">
+                <div className="col-span-1 text-left  mt-2 lg:mt-0 lg:text-right">
                 <p>{moment(news.datePublished).startOf("ss").fromNow()}</p>
                 </div>
               </div>

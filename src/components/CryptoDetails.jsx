@@ -71,9 +71,9 @@ const CryptoDetails = () => {
     {
       title: "Approved Supply",
       value: cryptoDetails?.supply?.confirmed ? (
-        <CheckOutlined />
+        <CheckOutlined className="text-lime-400"/>
       ) : (
-        <StopOutlined />
+        <StopOutlined className="text-red-600"/>
       ),
       icon: <ExclamationCircleOutlined />,
     },
@@ -98,7 +98,7 @@ const CryptoDetails = () => {
   return (
     <div className="cryptoDetail__conatiner">
       <div className="my-8 text-center">
-        <h2 className="my-4">
+        <h2 className="my-4 text-2xl text-cyan-600">
           {cryptoDetails?.name} ({cryptoDetails?.symbol}) Price
         </h2>
         <p className="my-4">
@@ -123,35 +123,35 @@ const CryptoDetails = () => {
         coinid={coinid}
         timePeriod={timePeriod}
       />
-      <div className="grid grid-cols-2 mt-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 mt-10 gap-6">
         <div>
           <div className="mb-4">
-            <h3>{cryptoDetails?.name} Value Statistics</h3>
+            <h3 className="font-semibold text-lg">{cryptoDetails?.name} Value Statistics</h3>
             <p>An overview showing the stats of {cryptoDetails?.name}</p>
           </div>
           {stats?.map((stat) => (
             <div
-              className="grid grid-cols-2 px-4 py-8 border-b"
-              style={{ marginRight: "150px" }}
+              className="grid grid-cols-1 sm:grid-cols-2 px-4 py-8 border-b"
+              
               key={stat.title}
             >
               <div className="flex">
                 <p className="-mt-1">{stat.icon}</p>
                 <span className="ml-4">{stat.title}</span>
               </div>
-              <h4 className="text-right">{stat.value}</h4>
+              <h4 className="sm:text-right font-bold">{stat.value}</h4>
             </div>
           ))}
         </div>
         <div>
           <div className="mb-4">
-            <h3>Other Statistics</h3>
-            <p>An overview showing the stats of app cryptocurrencies</p>
+            <h3 className="font-semibold text-lg">Other Statistics</h3>
+            <p>An overview showing the stats of cryptocurrencies</p>
           </div>
           {genericStats?.map((stat) => (
             <div
-              className="grid grid-cols-2 px-4 py-8 border-b"
-              style={{ marginRight: "150px" }}
+              className="grid grid-cols-1 sm:grid-cols-2 px-4 py-8 border-b"
+             
               key={stat.title}
             >
               <div className="flex items-center">
@@ -160,22 +160,22 @@ const CryptoDetails = () => {
                   
                 </p><span className="ml-4">{stat.title}</span>
               </div>
-              <h4 className="text-right">{stat.value}</h4>
+              <h4 className="sm:text-right font-bold">{stat.value}</h4>
             </div>
           ))}
         </div>
       </div>
       
         <div className="my-8">
-          <h3>What is {cryptoDetails?.name}?</h3>
+          <h3 className="font-semibold text-xl">What is {cryptoDetails?.name}?</h3>
           {HTMLReactParser(cryptoDetails?.description)}
         </div>
-        <h2 className="coin-details-heading">{cryptoDetails.name} Links</h2>
+        <h2 className="font-semibold text-xl">{cryptoDetails.name} Links</h2>
 
-        <div className="grid grid-cols-2 mt-4">
+        <div className="grid grid-cols-2 mt-4 gap-2">
           {cryptoDetails.links?.map((link) => (
-            <div className="coin-link" key={link.name}>
-              <h3 className="link-name">{link.type}</h3>
+            <div key={link.name}>
+              <h3 >{link.type}</h3>
               <a href={link.url} target="_blank" rel="noreferrer" className="underline text-cyan-600">
                 {link.name}
               </a>

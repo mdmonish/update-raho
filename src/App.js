@@ -10,12 +10,12 @@ import {
 
 function App() {
   return (
-    <div className="flex flex-row overflow-hidden">
-      <div className="basis-1/5 relative">
+    <div className="flex overflow-hidden">
+      <div className="border border-black hidden sm:block">
         <Navbar />
       </div>
-      <div className="basis-4/5 px-8 w-[100%]">
-        <div style={{minHeight:"80vh"}}><Routes>
+      <div className="px-8 flex-1 h-[99.8vh] overflow-y-auto">
+        <div><Routes>
           <Route exact path="/" Component={Homepage} />
           <Route exact path="/cryptocurrencies" Component={Cryptocurrencies} />
           <Route exact path="/crypto/:coinid" Component={CryptoDetails} />
@@ -23,9 +23,10 @@ function App() {
           <Route exact path="/news" Component={News} />
         </Routes>
         </div>
-        <div className="text-center py-10 mt-16 -mx-8 bg-black text-white">
-          <h2>CopyRights @2023&nbsp;<span className="text-cyan-600">CryptoMania</span></h2>
-          <h3>All rights reserved</h3>
+        <div className="flex justify-between text-center py-4 mt-16 -mx-8 px-8 bg-black text-white">
+          <div>CopyRights @2023&nbsp;<span className="text-cyan-600">CryptoMania</span>.&nbsp;
+          All rights reserved
+          </div>
           <div className="text-cyan-600">
             <Link to="/" className="underline">Home</Link>&nbsp;&nbsp;
             <Link to="/exchanges" className="underline">Exchanges</Link>&nbsp;&nbsp;

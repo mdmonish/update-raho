@@ -32,7 +32,7 @@ const Cryptocurrencies = ({ limited }) => {
           />
         </div>
       )}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
         {cryptoData?.map((currency, i) => (
           <div
             key={i}
@@ -42,7 +42,7 @@ const Cryptocurrencies = ({ limited }) => {
             <Link to={`/crypto/${currency.uuid}`}>
             
                 <div className="flex justify-between">
-                  <h2 className="font-bold">
+                  <h2 className="font-bold text-lg">
                     {currency.rank}. {currency.name}
                   </h2>
                   <img

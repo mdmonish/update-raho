@@ -11,8 +11,8 @@ import {
 const Navbar = () => {
 
   return (
-    <div className="bg-black text-cyan-600 fixed left-0 h-[100vh] w-1/5">
-      <div className="flex my-8 mx-4 w-[100%]">
+    <div className="bg-black pt-8 px-4 text-cyan-600 h-[99.8vh] w-56">
+      <div className="flex w-[100%] mb-6">
         <img src={cryptocurrency} alt="cryptocurrency" className="w-10 h-10" />
 
         <Link to="/" className="text-white text-bold text-2xl ml-2">
