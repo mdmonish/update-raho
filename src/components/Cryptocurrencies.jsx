@@ -20,7 +20,7 @@ const Cryptocurrencies = ({ limited }) => {
 
   if (isFetching) return <Loader/>;
   return (
-    <>
+    <div className={!limited ? "min-h-[79.75vh]":""}>
       {!limited && (
         <div className="text-center my-8">
           <input
@@ -32,7 +32,7 @@ const Cryptocurrencies = ({ limited }) => {
           />
         </div>
       )}
-      <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+      <div className={`grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 `}>
         {cryptoData?.map((currency, i) => (
           <div
             key={i}
@@ -61,7 +61,7 @@ const Cryptocurrencies = ({ limited }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

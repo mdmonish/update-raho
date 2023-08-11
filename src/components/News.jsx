@@ -17,7 +17,7 @@ const News = ({ limited }) => {
 
   if (isFetching) return <Loader />;
   return (
-    <div>
+    <div className={!limited ? "min-h-[84vh]":""}>
     {!limited && (
         
           <Select
