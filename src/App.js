@@ -7,6 +7,7 @@ import {
   News,
   CryptoDetails,
 } from "./components";
+import NavTop from "./components/NavTop";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <div className="border border-black hidden sm:block">
         <Navbar />
       </div>
-      <div className="px-8 flex-1 h-[99.8vh] overflow-y-auto">
-        <div><Routes>
+      <div className="sm:px-8 flex-1 h-[99.8vh] overflow-y-auto">
+     <div className="sm:hidden"> <NavTop /></div>
+        <div className="px-6 sm:px-0"><Routes>
           <Route exact path="/" Component={Homepage} />
           <Route exact path="/cryptocurrencies" Component={Cryptocurrencies} />
           <Route exact path="/crypto/:coinid" Component={CryptoDetails} />
