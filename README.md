@@ -1,1 +1,1 @@
-[live demo](https://crypto-mania-rct.netlify.app)
+This is link to application [live demo](https://crypto-mania-rct.netlify.app)
