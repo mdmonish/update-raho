@@ -38,18 +38,24 @@ const Homepage = () => {
           <h1 className="text-xl font-bold">{millify(globalStats?.totalMarketCap)}</h1>
         </div>
       </div>
-      <div className="sm:flex justify-between mt-6 mb-4 text-2xl font-bold">
+      <div className="sm:flex justify-between mt-6 mb-4 text-lg md:text-2xl font-bold">
         <h2 >Top 10 CryptoCurrencies in the World</h2>
-        <button className="text-sky-600">
+        <button className="text-sky-600 text-sm lg:text-lg hidden md:block">
           <Link to="/cryptocurrencies">Show More</Link>
         </button>
       </div>
       <Cryptocurrencies limited />
-      <div className="sm:flex justify-between mt-6 mb-4 text-2xl font-bold">
+      <button className="text-sky-600 text-md md:hidden mt-2 flex ml-auto">
+          <Link to="/cryptocurrencies">Show More</Link>
+        </button>
+      <div className="sm:flex justify-between mt-6 mb-4 text-lg md:text-2xl font-bold">
         <h2>Latest Crypto News</h2>
-        <button className="text-sky-600"><Link to="/news">Show More</Link></button>
+        <button className="text-sky-600 text-sm lg:text-lg hidden md:block"><Link to="/news">Show More</Link></button>
       </div>
       <News limited />
+      <button className="text-sky-600 text-md md:hidden mt-2 flex ml-auto">
+          <Link to="/news">Show More</Link>
+        </button>
     </div>
   );
 };
