@@ -95,10 +95,6 @@ const CryptoDetails = () => {
     },
   ];
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, []);
-
   if (isFetching) return <Loader />;
   return (
     <div className="cryptoDetail__conatiner">

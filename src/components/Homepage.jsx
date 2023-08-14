@@ -9,10 +9,6 @@ const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, []);
-
   if (isFetching) return <Loader/>;
 
   return (

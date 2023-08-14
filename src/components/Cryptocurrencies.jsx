@@ -10,9 +10,6 @@ const Cryptocurrencies = ({ limited }) => {
   const [cryptoData, setCryptoData] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, []);
   
   useEffect(() => {
     const filtered = cryptoList?.data?.coins?.filter((obj) =>

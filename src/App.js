@@ -11,14 +11,14 @@ import NavTop from "./components/NavTop";
 import { useState } from "react";
 
 function App() {
-  const [tab,setTab] = useState(0);
+
   return (
     <div className="flex overflow-hidden">
       <div className="border border-black hidden sm:block">
-        <Navbar tab={tab} setTab={setTab} />
+        <Navbar />
       </div>
       <div className="sm:px-8 flex-1 h-[99.8vh] overflow-y-auto">
-     <div className="sm:hidden"> <NavTop tab={tab} setTab={setTab} /></div>
+     <div className="sm:hidden"> <NavTop /></div>
         <div className="px-6 sm:px-0"><Routes>
           <Route exact path="/" Component={Homepage} />
           <Route exact path="/cryptocurrencies" Component={Cryptocurrencies} />

@@ -10,10 +10,6 @@ const Exchanges = () => {
   const [exchangesList, setExchangesList] = useState([]);
   const [activeIndex, setActiveIndex] = useState(-1);
 
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
   
   useEffect(() => {
     if (!isFetching) {

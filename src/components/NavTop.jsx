@@ -8,12 +8,11 @@ import {
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
+import { useLocation } from "react-router-dom";
 
-const NavTop = ({tab,setTab}) => {
+const NavTop = () => {
     const [toggle,setToggle]= useState(false);
-    const handleTab = (index) =>{
-      setTab(index);
-    }
+    const {pathname:pathName} = useLocation();
 
   return (
     <div className="bg-black pt-4 px-4 text-cyan-600 h-[10vh] sticky top-0 z-50">
@@ -29,32 +28,32 @@ const NavTop = ({tab,setTab}) => {
         <Link
           to="/"
           
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${tab ===0 ? "bg-sky-500 text-white":""}`}
-          onClick={()=>{setToggle(false);handleTab(0)}}
+          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName=== "/"  ? "bg-sky-500 text-white":""}`}
+          onClick={()=>{setToggle(false)}}
         >
           <HomeOutlined className="mr-2" />
           <p>Home</p>
         </Link>
         <Link
           to="/exchanges"
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${tab ===1 ? "bg-sky-500 text-white":""}`}
-          onClick={()=>{setToggle(false);handleTab(1)}}
+          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName=== "/exchanges" ? "bg-sky-500 text-white":""}`}
+          onClick={()=>{setToggle(false)}}
         >
           <FundOutlined className="mr-2" />
           <p>Exchanges</p>
         </Link>
         <Link
-          to="/cryptoCurrencies"
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${tab ===2 ? "bg-sky-500 text-white":""}`}
-          onClick={()=>{setToggle(false);handleTab(2)}}
+          to="/cryptocurrencies"
+          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName=== "/cryptocurrencies" ? "bg-sky-500 text-white":""}`}
+          onClick={()=>{setToggle(false)}}
         >
           <MoneyCollectOutlined className="mr-2" />
           <p>CryptoCurrencies</p>
         </Link>
         <Link
           to="/news"
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${tab ===3 ? "bg-sky-500 text-white":""}`}
-          onClick={()=>{setToggle(false);handleTab(3)}}
+          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName=== "/news"? "bg-sky-500 text-white":""}`}
+          onClick={()=>{setToggle(false)}}
         >
           <BulbOutlined className="mr-2" />
           <p>News</p>

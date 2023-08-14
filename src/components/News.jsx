@@ -14,11 +14,6 @@ const News = ({ limited }) => {
   });
   const { data } = useGetCryptosQuery(100);
 
-  useEffect(() => {
-    console.log("inside",window)
-    window.scrollTo({left:0,top:0});
-  })
-
   if (isFetching) return <Loader />;
   return (
     <div className={!limited ? "min-h-[84vh]":""}>
