@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { useGetNewsQuery } from "../services/newsApi";
 import { Select } from "antd";

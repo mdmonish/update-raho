@@ -8,7 +8,7 @@ import {
   CryptoDetails,
 } from "./components";
 import NavTop from "./components/NavTop";
-import { useState } from "react";
+
 
 function App() {
 

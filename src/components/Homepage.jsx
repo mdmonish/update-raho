@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React  from "react";
 import millify from "millify";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Cryptocurrencies, News } from "./index";
