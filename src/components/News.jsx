@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { useGetNewsQuery } from "../services/newsApi";
 import { Select } from "antd";
@@ -14,6 +14,10 @@ const News = ({ limited }) => {
   });
   const { data } = useGetCryptosQuery(100);
 
+  useEffect(() => {
+    console.log("inside",window)
+    window.scrollTo({left:0,top:0});
+  })
 
   if (isFetching) return <Loader />;
   return (

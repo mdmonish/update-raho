@@ -11,6 +11,10 @@ const Cryptocurrencies = ({ limited }) => {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
+  
+  useEffect(() => {
     const filtered = cryptoList?.data?.coins?.filter((obj) =>
       obj.name.toLowerCase().includes(inputValue.toLowerCase())
     );
@@ -22,10 +26,10 @@ const Cryptocurrencies = ({ limited }) => {
   return (
     <div className={!limited ? "min-h-[79.75vh]":""}>
       {!limited && (
-        <div className="text-center my-8">
+        <div className="text-left sm:text-center my-8">
           <input
             type="text"
-            className="border px-2 py-1 w-96 rounded-sm shadow-lg"
+            className="border px-2 py-1 md:w-96 rounded-sm shadow-lg"
             value={inputValue}
             placeholder="Search here"
             onChange={(e) => setInputValue(e.target.value)}

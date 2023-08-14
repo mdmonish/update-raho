@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import HTMLReactParser from "html-react-parser";
 import { useGetCryptoDetailsQuery } from "../services/cryptoApi";
@@ -19,6 +19,7 @@ import LineChart from "./LineChart";
 import { Select } from "antd";
 
 const CryptoDetails = () => {
+  console.log(useParams())
   const { coinid } = useParams();
   const [timePeriod, setTimePeriod] = useState("3h");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinid);
@@ -93,6 +94,10 @@ const CryptoDetails = () => {
       icon: <ExclamationCircleOutlined />,
     },
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
   if (isFetching) return <Loader />;
   return (
