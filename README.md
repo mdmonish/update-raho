@@ -5,4 +5,4 @@
   - Listing of all the available exchanges and their related information.
 
 #Demo
-  This is a link to the application [live demo](https://crypto-mania-rct.netlify.app)
+  - This is a link to the application [live demo](https://crypto-mania-rct.netlify.app)
