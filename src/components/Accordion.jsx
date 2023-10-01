@@ -3,7 +3,7 @@ import millify from "millify";
 
 const Accordion = ({ items, active, setActive }) => {
   return (
-    <>
+    <div className={!!items ? "min-h-[84vh]" : ""}>
       <div className="grid grid-cols-2 sm:grid-cols-4 py-4 px-2 ">
         <h4>Exchanges</h4>
         <h4>24h Trade Volume</h4>
@@ -23,7 +23,10 @@ const Accordion = ({ items, active, setActive }) => {
             </h4>
             <h4>${millify(ex.quotes?.USD?.reported_volume_24h)}</h4>
             <h4 className="hidden sm:block">{ex.markets}</h4>
-            <h4 className="hidden sm:block"> {millify(ex.confidence_score)}%</h4>
+            <h4 className="hidden sm:block">
+              {" "}
+              {millify(ex.confidence_score)}%
+            </h4>
           </div>
           {index === active && (
             <div className="py-4 px-2">
@@ -32,7 +35,7 @@ const Accordion = ({ items, active, setActive }) => {
           )}
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

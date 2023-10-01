@@ -10,8 +10,7 @@ import {
 import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const {pathname:pathName} = useLocation();
-
+  const { pathname: pathName } = useLocation();
 
   return (
     <div className="bg-black pt-8 px-4 text-cyan-600 h-[99.8vh] w-56">
@@ -26,28 +25,36 @@ const Navbar = () => {
       <div>
         <Link
           to="/"
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName=== "/" ? "bg-sky-500 text-white":""}`}
+          className={`flex flex-wrap items-center py-2 px-4 ${
+            pathName === "/" ? "bg-sky-500 text-white" : ""
+          }`}
         >
           <HomeOutlined className="mr-2" />
           <p>Home</p>
         </Link>
         <Link
           to="/exchanges"
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName === "/exchanges"? "bg-sky-500 text-white":""}`}
+          className={`flex flex-wrap items-center py-2 px-4 ${
+            pathName === "/exchanges" ? "bg-sky-500 text-white" : ""
+          }`}
         >
           <FundOutlined className="mr-2" />
           <p>Exchanges</p>
         </Link>
         <Link
           to="/cryptocurrencies"
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName === "/cryptocurrencies"? "bg-sky-500 text-white":""}`}
+          className={`flex flex-wrap items-center py-2 px-4 ${
+            pathName === "/cryptocurrencies" ? "bg-sky-500 text-white" : ""
+          }`}
         >
           <MoneyCollectOutlined className="mr-2" />
           <p>CryptoCurrencies</p>
         </Link>
         <Link
           to="/news"
-          className={`flex flex-wrap items-center py-2 px-4 hover:bg-sky-500 hover:text-white ${pathName === "/news"? "bg-sky-500 text-white":""}`}
+          className={`flex flex-wrap items-center py-2 px-4 ${
+            pathName === "/news" ? "bg-sky-500 text-white" : ""
+          }`}
         >
           <BulbOutlined className="mr-2" />
           <p>News</p>

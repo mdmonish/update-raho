@@ -4,17 +4,15 @@ import { useGetExchangesQuery } from "../services/exchangesApi";
 import Accordion from "./Accordion";
 import Loader from "./Loader";
 
-
 const Exchanges = () => {
   const { data: exchanges, isFetching } = useGetExchangesQuery();
   const [exchangesList, setExchangesList] = useState([]);
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  
   useEffect(() => {
     if (!isFetching) {
       const filtered = _.sortBy(
-        exchanges?.filter((val) => val.reported_rank),
+        exchanges?.filter(val => val.reported_rank),
         ["reported_rank"]
       );
       setExchangesList(filtered);
@@ -24,8 +22,14 @@ const Exchanges = () => {
   if (isFetching) return <Loader />;
 
   return (
-    <div className="mt-4">
-      <Accordion items={exchangesList} active={activeIndex} setActive={setActiveIndex}/>
+    <div className={`mt-4"`}>
+      {!isFetching && (
+        <Accordion
+          items={exchangesList}
+          active={activeIndex}
+          setActive={setActiveIndex}
+        />
+      )}
     </div>
   );
 };
