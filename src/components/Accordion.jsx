@@ -11,7 +11,7 @@ const Accordion = ({ items, active, setActive }) => {
         <h4 className="hidden sm:block">Changes</h4>
       </div>
       {items?.map((ex, index) => (
-        <div key={index}>
+        <div key={index} className="cursor-pointer">
           <div
             className={`grid grid-cols-2 sm:grid-cols-4 font-semibold bg-slate-100 rounded-md ${
               index === active ? "rounded-b-none" : " "
