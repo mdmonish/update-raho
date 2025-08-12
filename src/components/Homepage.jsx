@@ -60,7 +60,7 @@ const Homepage = () => {
       <button className="text-sky-600 text-md md:hidden mt-2 flex ml-auto">
         <Link to="/cryptocurrencies">Show More</Link>
       </button>
-      <div className="sm:flex justify-between mt-6 mb-4 text-lg md:text-2xl font-bold">
+{/*       <div className="sm:flex justify-between mt-6 mb-4 text-lg md:text-2xl font-bold">
         <h2>Latest Crypto News</h2>
         <button className="text-sky-600 text-sm lg:text-lg hidden md:block">
           <Link to="/news">Show More</Link>
@@ -69,7 +69,7 @@ const Homepage = () => {
       <News limited />
       <button className="text-sky-600 text-md md:hidden mt-2 flex ml-auto">
         <Link to="/news">Show More</Link>
-      </button>
+      </button> */}
     </div>
   );
 };
